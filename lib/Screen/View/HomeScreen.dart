@@ -1,4 +1,5 @@
 import 'package:authorapp/Screen/Controller/HomeController.dart';
+import 'package:authorapp/Screen/View/BookdetailsScreen.dart';
 import 'package:authorapp/Screen/model/model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List allData = [];
 
-  HomeController controller =Get.put(HomeController());
+  HomeController controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +29,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text("Browse", style: TextStyle(color: Colors.black)),
         actions: [
-          IconButton(onPressed: (){
-            Get.toNamed("detail");
-            }, icon: Icon(
-            Icons.add,
-            size: 35,
-            color: Colors.black,
-          ))
+          IconButton(
+              onPressed: () {
+                Get.toNamed("detail");
+              },
+              icon: Icon(
+                Icons.add,
+                size: 35,
+                color: Colors.black,
+              ))
         ],
         backgroundColor: Colors.white,
       ),
@@ -68,87 +71,111 @@ class _HomeScreenState extends State<HomeScreen> {
                   return ListView.builder(
                     itemCount: allData.length,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(25),
-                        child: Stack(
-                          alignment: Alignment.centerLeft,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(left: 60),
-                              height: 280,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 105, right: 15, top: 40, bottom: 40),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("${allData[index].name}",
-                                        style: TextStyle(
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.bold)),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
+                      return Obx(
+                        () => InkWell(
+                          onTap: () {
+                            BookData b1 = BookData(
+                              name: allData[index].name,
+                              link: allData[index].link,
+                              Aname: allData[index].Aname,
+                              Aauthor: allData[index].Aauthor,
+                              Abook: allData[index].Abook,
+                              rating: allData[index].rating,
+                              Pyear: allData[index].Pyear,
+                            );
+                            controller.bookdata.add(b1);
+                            Get.to(BookdetailsScreen());
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(25),
+                            child: Stack(
+                              alignment: Alignment.centerLeft,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 60),
+                                  height: 280,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 105,
+                                        right: 15,
+                                        top: 40,
+                                        bottom: 40),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        RatingBar.builder(
-                                          initialRating: 3,
-                                          itemSize: 25,
-                                          allowHalfRating: true,
-                                          itemBuilder: (context, _) => Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                          ),
-                                          onRatingUpdate: (rating) {
-                                            print(rating);
-                                          },
+                                        Text("${allData[index].name}",
+                                            style: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.bold)),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Row(
+                                          children: [
+                                            RatingBar.builder(
+                                              initialRating: 3,
+                                              itemSize: 25,
+                                              allowHalfRating: true,
+                                              itemBuilder: (context, _) => Icon(
+                                                Icons.star,
+                                                color: Colors.amber,
+                                              ),
+                                              onRatingUpdate: (rating) {
+                                                print(rating);
+                                              },
+                                            ),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text("5.0",
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.grey)),
+                                          ],
                                         ),
                                         SizedBox(
-                                          width: 20,
+                                          height: 20,
                                         ),
-                                        Text("5.0",
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey)),
+                                        Text(
+                                          "${allData[index].Abook}",
+                                          maxLines: 4,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey,
+                                            overflow: TextOverflow.ellipsis,
+                                            letterSpacing: 2,
+                                          ),
+                                        ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      "${allData[index].Abook}",
-                                      maxLines: 5,
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey,
-                                        overflow: TextOverflow.ellipsis,
-                                        letterSpacing: 2,
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                                Container(
+                                  height: 210,
+                                  width: 150,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [BoxShadow(blurRadius: 4)],
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.network(
+                                      allData[index].link,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Container(
-                              height: 210,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                      boxShadow: [BoxShadow(blurRadius: 4)],
-                                  borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image.network(allData[index].link,fit: BoxFit.cover,),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       );
                     },

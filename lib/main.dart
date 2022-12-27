@@ -1,3 +1,4 @@
+import 'package:authorapp/Screen/View/BookdetailsScreen.dart';
 import 'package:authorapp/Screen/View/DetailScreen.dart';
 import 'package:authorapp/Screen/View/HomeScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,7 +13,8 @@ void main() async {
     debugShowCheckedModeBanner: false,
     routes: {
       '/': (context) => HomeScreen(),
-      'detail': (context) => DetailScreen()
+      'detail': (context) => DetailScreen(),
+      'bookdetail': (context) => BookdetailsScreen()
     },
   ));
 }

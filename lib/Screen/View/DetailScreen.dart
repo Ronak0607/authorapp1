@@ -21,133 +21,138 @@ class _DetailScreenState extends State<DetailScreen> {
   TextEditingController txtrating = TextEditingController();
   TextEditingController txtPyear = TextEditingController();
 
-  HomeController controller =Get.put(HomeController());
+  HomeController controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
-
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Get.back();
             }),
-            title: Text("Add Book", style: TextStyle(color: Colors.black)),
-            backgroundColor: Colors.white,
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    color: Colors.white,
-                    child: TextField(
-                      controller: txtname,
-                      decoration: InputDecoration(
-
-                          hintText: "Name",
-                          prefixIcon: Icon(Icons.book),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 2),
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: TextField(
-                      controller: txtlink,
-                      decoration: InputDecoration(
-                          hintText: "Image Link",
-                          prefixIcon: Icon(Icons.image),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 2),
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: TextField(
-                      controller: txtAname,
-                      decoration: InputDecoration(
-                          hintText: "Author Name",
-                          prefixIcon: Icon(Icons.edit),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 2),
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: TextField(
-                      controller: txtAauthor,
-                      maxLines: 3,
-                      decoration: InputDecoration(
-                          hintText: "About Author ",
-                          prefixIcon: Icon(Icons.menu_book),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 2),
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: TextField(
-                      controller: txtAbook,
-                      maxLines: 3,
-                      decoration: InputDecoration(
-                          hintText: "About Book",
-                          prefixIcon: Icon(Icons.star),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 2),
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: TextField(
-                      controller: txtrating,
-                      decoration: InputDecoration(
-                          hintText: "Rating",
-                          prefixIcon: Icon(Icons.calendar_month),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 2),
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: TextField(
-                      controller: txtPyear,
-                      decoration: InputDecoration(
-                          hintText: "Publish Year",
-                          prefixIcon: Icon(Icons.book),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 2),
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  ElevatedButton(onPressed: () {
+        title: Text("Add Book", style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                color: Colors.white,
+                child: TextField(
+                  controller: txtname,
+                  decoration: InputDecoration(
+                      hintText: "Name",
+                      prefixIcon: Icon(Icons.book),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2),
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                color: Colors.white,
+                child: TextField(
+                  controller: txtlink,
+                  decoration: InputDecoration(
+                      hintText: "Image Link",
+                      prefixIcon: Icon(Icons.image),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2),
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                color: Colors.white,
+                child: TextField(
+                  controller: txtAname,
+                  decoration: InputDecoration(
+                      hintText: "Author Name",
+                      prefixIcon: Icon(Icons.edit),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2),
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                color: Colors.white,
+                child: TextField(
+                  controller: txtAauthor,
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                      hintText: "About Author ",
+                      prefixIcon: Icon(Icons.menu_book),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2),
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                color: Colors.white,
+                child: TextField(
+                  controller: txtAbook,
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                      hintText: "About Book",
+                      prefixIcon: Icon(Icons.star),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2),
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                color: Colors.white,
+                child: TextField(
+                  controller: txtrating,
+                  decoration: InputDecoration(
+                      hintText: "Rating",
+                      prefixIcon: Icon(Icons.calendar_month),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2),
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                color: Colors.white,
+                child: TextField(
+                  controller: txtPyear,
+                  decoration: InputDecoration(
+                      hintText: "Publish Year",
+                      prefixIcon: Icon(Icons.book),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2),
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                  onPressed: () {
                     insertData(
                         txtname.text,
                         txtlink.text,
@@ -158,11 +163,12 @@ class _DetailScreenState extends State<DetailScreen> {
                         txtPyear.text);
 
                     Get.back();
-                  }, child: Text("Finish"))
-                ],
-              ),
-            ),
+                  },
+                  child: Text("Finish"))
+            ],
           ),
-        ));
+        ),
+      ),
+    ));
   }
 }
